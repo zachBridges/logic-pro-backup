@@ -37,13 +37,16 @@ if [ -n "$(pgrep Logic)" ]; then
     exit 1
 fi
 # make a new folder with today's date formatted 2024-08-30
-mkdir $DESTINATION_FOLDER_NAME
+mkdir "$DESTINATION_FOLDER_NAME"
+echo "New backup folder created"
 
 # Copy all the known critical Logic Pro configuration files
 cp -r "$HOME/Music/Audio Music Apps/" "$DESTINATION_FOLDER_NAME/Audio Music Apps"
+echo "Finished backing up configuration"
 
 # Copy the entire ~/Music/Logic/ directory which includes all Logic Pro projects
 cp -r "$HOME/Music/Logic" "$DESTINATION_FOLDER_NAME"
+echo "Finished backing up projects"
 
 echo "✨ Backup complete 💪🏽 "
 echo "Files written to $DESTINATION_FOLDER_NAME"
