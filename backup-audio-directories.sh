@@ -28,7 +28,7 @@ if [ ! -d "/Volumes/$EXTERNAL_HARD_DRIVE_NAME/$DESTINATION_PARENT_FOLDER_NAME" ]
     exit 1
 fi
 
-command -v pgrep
+command -v pgrep >/dev/null
 
 # If Logic Pro X already running, throw error. E.g., don't try and read/write files are in-use.
 # If pgrep exits 0, one or more processes were found.
