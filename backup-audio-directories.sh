@@ -44,6 +44,15 @@ echo "New backup folder created"
 cp -r "$HOME/Music/Audio Music Apps/" "$DESTINATION_FOLDER_NAME/Audio Music Apps"
 echo "Finished backing up configuration"
 
+# Copy all VST3, VST (legacy), and Audio Unit (AU) plugins
+# AU
+cp -r "/Library/Audio/Plug-Ins/Components" "$DESTINATION_FOLDER_NAME/Components"
+# VST3
+cp -r "/Library/Audio/Plug-Ins/VST3" "$DESTINATION_FOLDER_NAME/VST3"
+# VST (legacy)
+cp -r "/Library/Audio/Plug-Ins/VST" "$DESTINATION_FOLDER_NAME/VST"
+echo "Finished backing up plugins"
+
 # Copy the entire ~/Music/Logic/ directory which includes all Logic Pro projects
 cp -r "$HOME/Music/Logic" "$DESTINATION_FOLDER_NAME"
 echo "Finished backing up projects"
