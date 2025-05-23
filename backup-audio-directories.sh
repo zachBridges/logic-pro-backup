@@ -5,7 +5,7 @@ set -eou pipefail
 # TODO provide time taken to run this entire thing
 
 EXTERNAL_HARD_DRIVE_NAME="breezy"
-DESTINATION_PARENT_FOLDER_NAME="m1-macbook-backups"
+DESTINATION_PARENT_FOLDER_NAME="m4-macbook-backups"
 
 DEBUG_MODE=0
 if [ $DEBUG_MODE -gt 0 ]; then
@@ -32,6 +32,8 @@ command -v pgrep >/dev/null
 
 # If Logic Pro X already running, throw error. E.g., don't try and read/write files are in-use.
 # If pgrep exits 0, one or more processes were found.
+# TODO: Need a more specific check for logic Pro.  There's a LogicProThumbnailExtension that's getting
+# picked up b y this.
 if [ -n "$(pgrep Logic)" ]; then
     echo "Logic Pro is currently running. Files will not be backed up."
     exit 1
@@ -40,11 +42,11 @@ fi
 mkdir "$DESTINATION_FOLDER_NAME"
 echo "New backup folder created"
 
-# Copy all the known critical Logic Pro configuration files
+echo "Copying all known critical Logic Pro configuration files"
 cp -r "$HOME/Music/Audio Music Apps/" "$DESTINATION_FOLDER_NAME/Audio Music Apps"
 echo "Finished backing up configuration"
 
-# Copy the entire ~/Music/Logic/ directory which includes all Logic Pro projects
+Echo "Copying the entire ~/Music/Logic/ directory - which includes all Logic Pro projects"
 cp -r "$HOME/Music/Logic" "$DESTINATION_FOLDER_NAME"
 echo "Finished backing up projects"
 
