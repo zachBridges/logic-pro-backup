@@ -1,7 +1,9 @@
 # ignore the backups
-m1-macbook-backups
+*-macbook-backups/
 
 # OSX junk
 .fseventsd
 .Spotlight*
 .Trashes
+._.gitignore
+
