@@ -18,13 +18,13 @@ DESTINATION_FOLDER_NAME="/Volumes/$EXTERNAL_HARD_DRIVE_NAME/$DESTINATION_PARENT_
 # Jidoka steps
 # Check the destination drive is available: /Volumes/breezy/
 if [ ! -d "/Volumes/$EXTERNAL_HARD_DRIVE_NAME" ]; then
-    echo "External hard, $EXTERNAL_HARD_DRIVE_NAME, not found"
+    echo "💥 External disc, $EXTERNAL_HARD_DRIVE_NAME, not found"
     exit 1
 fi
 
 # Check the target directory exists: /Volumes/breezy/m1-macbook-backups/
 if [ ! -d "/Volumes/$EXTERNAL_HARD_DRIVE_NAME/$DESTINATION_PARENT_FOLDER_NAME" ]; then
-    echo "Parent directory for backups not found, $DESTINATION_PARENT_FOLDER_NAME, not found"
+    echo "💥 Parent directory for backups not found, $DESTINATION_PARENT_FOLDER_NAME, not found"
     exit 1
 fi
 
@@ -35,7 +35,7 @@ command -v pgrep >/dev/null
 # TODO: Need a more specific check for logic Pro.  There's a LogicProThumbnailExtension that's getting
 # picked up b y this.
 if [ -n "$(pgrep Logic)" ]; then
-    echo "Logic Pro is currently running. Files will not be backed up."
+    echo "💥 Logic Pro is currently running. Files will not be backed up."
     exit 1
 fi
 # make a new folder with today's date formatted 2024-08-30
